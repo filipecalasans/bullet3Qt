@@ -46,6 +46,8 @@
 #include <Qt3DExtras/QSphereMesh>
 #include <Qt3DExtras/QPhongMaterial>
 
+#include "simulation/physicssimulation.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -59,6 +61,8 @@ public:
     ~MainWindow();
 
     void setupWidget();    
+
+    /* Test Only */
     void drawShapes();
 
 private:
@@ -76,6 +80,7 @@ private:
     Qt3DCore::QTransform *lightTransform = nullptr;
     Qt3DExtras::QFirstPersonCameraController *camController = nullptr;
 
+    /* Only For test propose */
     Qt3DExtras::QTorusMesh *m_torus;
     Qt3DCore::QEntity *m_coneEntity;
     Qt3DCore::QEntity *m_cylinderEntity;
@@ -85,6 +90,9 @@ private:
     Qt3DCore::QEntity *m_sphereEntity;
     Qt3DRender::QMesh *customMesh;
     Qt3DCore::QEntity *customEntity;
+
+    PhysicsSImulation *simulation = nullptr;
+
 };
 
 #endif // MAINWINDOW_H

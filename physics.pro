@@ -29,8 +29,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    simulation/physicssimulation.cpp \
+    simulation/multibody.cpp \
+    simulation/multibodycar.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    simulation/physicssimulation.h \
+    simulation/multibody.h \
+    simulation/multibodycar.h
 
 FORMS    += mainwindow.ui

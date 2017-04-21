@@ -10,7 +10,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     resize(800,600);
-    setupWidget();
+    //setupWidget();
+
+    simulation - new PhysicsSImulation("Simulation", this);
 }
 
 MainWindow::~MainWindow()
@@ -117,7 +119,7 @@ void MainWindow::setupWidget()
 void MainWindow::drawShapes()
 {
 //    customMesh = new Qt3DRender::QMesh();
-//    customMesh->setSource(QUrl::fromLocalFile("/home/filipe/Documents/Workspace/portfolio/physics/Robotic_Arm_03.obj"));
+//    customMesh->setSource(QUrl::fromLocalFile("Robotic_Arm_03.obj"));
 
 //    Qt3DCore::QTransform *customMeshTransform = new Qt3DCore::QTransform();
 //    customMeshTransform->setScale(2.0f);
