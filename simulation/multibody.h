@@ -8,6 +8,7 @@
 #include "BulletDynamics/Featherstone/btMultiBodyLinkCollider.h"
 #include "BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
 #include "BulletCollision/BroadphaseCollision/btDbvtBroadphase.h"
+#include "BulletCollision/CollisionShapes/btBoxShape.h"
 
 enum MyFilterModes
 {
@@ -57,6 +58,7 @@ public:
     virtual ~Multibody();
 
     virtual void initPhysics()=0;
+
     virtual void exitPhysics();
     virtual void updateGraphics(){}
     virtual void stepSimulation(float deltaTime);
@@ -65,7 +67,7 @@ public:
     //reset camera is only called when switching demo. this way you can restart (initPhysics) and watch in a specific location easier
     virtual void resetCamera(){}
     virtual bool mouseMoveCallback(float x,float y)=0;
-    virtual bool mouseButtonCallback(int button, int state, float x, float y)=0;
+    virtual bool mouseButtonCallback(int button, int state, float x, float y);
     virtual bool keyboardCallback(int key, int state);
 
     virtual void vrControllerMoveCallback(int controllerId, float pos[4], float orientation[4], float analogAxis) {}
@@ -76,10 +78,17 @@ public:
     virtual void processCommandLineArgs(int argc, char* argv[]){}
 
     virtual void removePickingConstraint();
+    virtual btVector3 getRayTo(int x, int y);
+    virtual void createEmptyDynamicsWorld();
+    virtual bool pickBody(const btVector3 &rayFromWorld, const btVector3 &rayToWorld);
+    virtual bool movePickedBody(const btVector3 &rayFromWorld, const btVector3 &rayToWorld);
+    virtual btBoxShape *createBoxShape(const btVector3 &halfExtents);
+    virtual btRigidBody *createRigidBody(float mass, const btTransform &startTransform,
+                                         btCollisionShape *shape, const btVector4 &color = btVector4(1, 0, 0, 1));
+    virtual void syncPhysicsToGraphics();
 
 protected:
 
-    void createEmptyDynamicsWorld();
 
 protected:
 
